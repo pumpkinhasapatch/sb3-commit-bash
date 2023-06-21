@@ -1,4 +1,4 @@
-# sb3-commit
+# sb3-commit-bash
 
 <p align="center">
   <img width="640" height="320" src="https://user-images.githubusercontent.com/20208339/119164337-38ece300-ba54-11eb-8a0e-0ea0b9dbaea4.png">
@@ -6,6 +6,10 @@
 
 Automation of GitHub commits for Scratch 3.0 projects (with scripts converted to text)
 --------------------------------------------------------------------------------------
+    This is the Linux version of sb3-commit translated into a Bash shell script by pumpkinhasapatch.
+
+    RokCoder's version was written for Command Prompt and relied on other Windows executables to work.  
+    This version allows users on other operating systems to easily review changes to their Scratch projects through GitHub.
 
 WHAT IT DOES
 ------------
@@ -19,38 +23,37 @@ WHAT IT DOES
 
 WHAT IT NEEDS
 -------------
-    Windows 10
-    7z
-    GitHub Desktop (and path to installation adding to PATH)
+    Any Linux distribution bundled with GNU coreutils
+    'unzip' command, included in most distros but may need to be manually installed
+    GitHub Desktop Linux Fork installed from .deb, .rpm or package manager
 
-OTHER NOTES
+GitHub Desktop Linux Fork can be downloaded [here](https://github.com/shiftkey/desktop#readme).
+
+  OTHER NOTES
 -----------
     The basic folder structure is -
 
-        MyProject
-            assets (used by tool to store asset files)
-            bin (contains commit.bat which is fully commented in case you want or need to edit it)
-            sb3 (used by tool to store sb3 file)
-            scripts (used by tool to store script files)
+        MyProject/
+            commit.sh (fully commented in case you want or need to edit it)
+            scripts/ (used by tool to store converted Scratch scripts)
 
-    WARNING: Do not store your own files in the assets, sb3 or scripts folders as they are purged during the conversion process!
-
-    Add any other folders or files that you want added to the repository. I tend to have 'source-graphics' for GIMP layered graphic files, 'source-sfx' for pre-squashed sound effects, 'data' for data, etc.
+    sb3 and assets folders are currently not working due to changes in the Scratch API.
 
 HOW TO SET UP
 -------------
     1) Download the repository as a zip file and extract it to your project folder (e.g. into d:/projects/beeb-emulator). This will create several subfolders, the most important of which will be ./bin because that will contain commit.bat
-    2) Ensure your system is set up with "what it needs". If you're using a different platform or different tools then the batch file will need modification to match.
-    3) Edit the commit.bat file for the project you're working on -
+    2) Ensure your system is set up with "what it needs". If you're using a different platform or different tools then the bash script will need modification to match.
+    3) Edit the commit.sh file for the project you're working on -
         i) Set PROJECT to the project id of your Scratch project - set to RokCoder's Beeb Emulator by default (531881458)
-        ii) Set UNZIP to point to your 7z.exe file - assuming you have installed 7z then this is probably already pointing to it
+        ii) Set DOWNLOAD to point to the folder where your web browser saves files (Uses RokCoder's website to convert projects)
     4) Create a GitHub repository for your project folder
-    
+
 HOW TO USE
 ----------
-    1) Run the batch file
-    2) When GitHub Desktop opens, ensure it's using the correct repository
-    3) Enter your commit message and hit the commit button
+    1) Run the bash script
+    2) Wait for scripts to parse in sb3-to-txt, then save the output .zip to your Downloads folder
+    3) When GitHub Desktop opens, ensure it's using the correct repository
+    4) Enter your commit message and hit the commit button
 
 FOR OTHER PLATFORMS AND TOOLS
 -----------------------------
